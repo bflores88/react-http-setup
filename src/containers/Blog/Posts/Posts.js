@@ -31,7 +31,7 @@ class Posts extends Component {
 			.catch((error) => {
 				console.log(error);
 			});
-	}
+  }
 
 	postSelectedHandler = (id) => {
 		// this.setState({
