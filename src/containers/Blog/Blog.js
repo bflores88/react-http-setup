@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import FullPost from '../../containers/Blog/FullPost/FullPost';
 
 import './Blog.css';
 
 class Blog extends Component {
-
 	render() {
 		return (
 			<div className="Blog">
@@ -15,33 +14,41 @@ class Blog extends Component {
 					<nav>
 						<ul>
 							<li>
-                <NavLink
-                  to="/"
-                  exact
-                  activeClassName="my-active"
-                  activeStyle={{
-                    color: '#fa923f',
-                    textDecoration: 'underline'
-                  }}
-                >Home</NavLink>
+								<NavLink
+									to="/"
+									exact
+									activeClassName="my-active"
+									activeStyle={{
+										color: '#fa923f',
+										textDecoration: 'underline',
+									}}
+								>
+									Home
+								</NavLink>
 							</li>
 							<li>
-                <NavLink to={{
-                  pathname: '/new-post',
-                  hash: '#submit',
-                  // query-parameter
-                  search: '?quick-submit=true'
-                }}>New Post</NavLink>
+								<NavLink
+									to={{
+										pathname: '/new-post',
+										hash: '#submit',
+										// query-parameter
+										search: '?quick-submit=true',
+									}}
+								>
+									New Post
+								</NavLink>
 							</li>
 						</ul>
 					</nav>
-        </header>
-        {/* <Route path="/" exact render={() => <h1>Home</h1>} />
+				</header>
+				{/* <Route path="/" exact render={() => <h1>Home</h1>} />
         <Route path="/" render={() => <h1>Home 2</h1>} />
-        <Route path="/new-post" exact render={() => <h1>New Post</h1>} /> */}
-        <Route path="/" exact component={Posts} />
-        <Route path="/new-post" component={NewPost} />
-        <Route path="/:id" exact component={FullPost} />
+      <Route path="/new-post" exact render={() => <h1>New Post</h1>} /> */}
+      <Route path="/" exact component={Posts} />
+				<Switch>
+					<Route path="/new-post" component={NewPost} />
+					<Route path="/:id" exact component={FullPost} />
+				</Switch>
 			</div>
 		);
 	}
