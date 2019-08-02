@@ -18,6 +18,9 @@ class FullPost extends Component {
             loadedPost: response.data
           })
         })
+          .catch(error => {
+          console.log('Error', error)
+        })
       }
     }
   }
